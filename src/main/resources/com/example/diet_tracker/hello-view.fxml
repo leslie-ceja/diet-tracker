@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="101.0" prefWidth="587.0">
+         <children>
+            <Label layoutX="124.0" layoutY="27.0" text="Select your ingredients">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="300.0" prefWidth="600.0">
+         <children>
+            <HBox layoutY="-1.0" prefHeight="299.0" prefWidth="601.0">
+               <children>
+                  <AnchorPane prefHeight="300.0" prefWidth="82.0">
+                     <children>
+                        <VBox layoutX="7.0" layoutY="-2.0" prefHeight="300.0" prefWidth="110.0">
+                           <children>
+                              <RadioButton mnemonicParsing="false" text="Apple" />
+                              <RadioButton mnemonicParsing="false" text="Banana" />
+                              <RadioButton mnemonicParsing="false" text="Orange" />
+                              <RadioButton mnemonicParsing="false" text="Peach" />
+                              <RadioButton mnemonicParsing="false" text="Pear" />
+                              <RadioButton mnemonicParsing="false" text="Grapes" />
+                              <RadioButton mnemonicParsing="false" text="Watermelon" />
+                              <RadioButton mnemonicParsing="false" text="Pomegranate" />
+                              <RadioButton mnemonicParsing="false" text="Strawberry" />
+                              <RadioButton mnemonicParsing="false" text="Pineapple" />
+                              <RadioButton mnemonicParsing="false" text="Mango" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="300.0" prefWidth="102.0">
+                     <children>
+                        <VBox prefHeight="300.0" prefWidth="114.0">
+                           <children>
+                              <RadioButton mnemonicParsing="false" text="Broccoli" />
+                              <RadioButton mnemonicParsing="false" text="Spinach" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="299.0" prefWidth="117.0">
+                     <children>
+                        <VBox layoutX="-1.0" layoutY="-2.0" prefHeight="300.0" prefWidth="117.0">
+                           <children>
+                              <RadioButton mnemonicParsing="false" text="pasta" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="299.0" prefWidth="117.0">
+                     <children>
+                        <VBox layoutX="2.0" prefHeight="300.0" prefWidth="117.0">
+                           <children>
+                              <RadioButton mnemonicParsing="false" text="Chicken" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="299.0" prefWidth="132.0">
+                     <children>
+                        <VBox layoutX="6.0" prefHeight="307.0" prefWidth="119.0">
+                           <children>
+                              <RadioButton mnemonicParsing="false" text="Cheese" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
