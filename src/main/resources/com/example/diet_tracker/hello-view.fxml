@@ -22,56 +22,56 @@
                <children>
                   <AnchorPane prefHeight="300.0" prefWidth="82.0">
                      <children>
-                        <VBox layoutX="7.0" layoutY="-2.0" prefHeight="300.0" prefWidth="110.0">
+                        <VBox fx:id="vbox_fruit" layoutX="7.0" layoutY="-2.0" prefHeight="300.0" prefWidth="110.0">
                            <children>
-                              <RadioButton mnemonicParsing="false" text="Apple" />
-                              <RadioButton mnemonicParsing="false" text="Banana" />
-                              <RadioButton mnemonicParsing="false" text="Orange" />
-                              <RadioButton mnemonicParsing="false" text="Peach" />
-                              <RadioButton mnemonicParsing="false" text="Pear" />
-                              <RadioButton mnemonicParsing="false" text="Grapes" />
-                              <RadioButton mnemonicParsing="false" text="Watermelon" />
-                              <RadioButton mnemonicParsing="false" text="Pomegranate" />
-                              <RadioButton mnemonicParsing="false" text="Strawberry" />
-                              <RadioButton mnemonicParsing="false" text="Pineapple" />
-                              <RadioButton mnemonicParsing="false" text="Mango" />
+                              <RadioButton fx:id="rbtn_apple" mnemonicParsing="false" text="Apple" />
+                              <RadioButton fx:id="rbtn_banana" mnemonicParsing="false" text="Banana" />
+                              <RadioButton fx:id="rbtn_orange" mnemonicParsing="false" text="Orange" />
+                              <RadioButton fx:id="rbtn_peach" mnemonicParsing="false" text="Peach" />
+                              <RadioButton fx:id="rbtn_pear" mnemonicParsing="false" text="Pear" />
+                              <RadioButton fx:id="rbtn_grapes" mnemonicParsing="false" text="Grapes" />
+                              <RadioButton fx:id="rbtn_watermelon" mnemonicParsing="false" text="Watermelon" />
+                              <RadioButton fx:id="rbtn_watermelon" mnemonicParsing="false" text="Pomegranate" />
+                              <RadioButton fx:id="rbtn_strawberry" mnemonicParsing="false" text="Strawberry" />
+                              <RadioButton fx:id="rbtn_pineapple" mnemonicParsing="false" text="Pineapple" />
+                              <RadioButton fx:id="rbtn_mango" mnemonicParsing="false" text="Mango" />
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="300.0" prefWidth="102.0">
                      <children>
-                        <VBox prefHeight="300.0" prefWidth="114.0">
+                        <VBox fx:id="vbox_vegetables" prefHeight="300.0" prefWidth="114.0">
                            <children>
-                              <RadioButton mnemonicParsing="false" text="Broccoli" />
-                              <RadioButton mnemonicParsing="false" text="Spinach" />
+                              <RadioButton fx:id="rbtn_broccoli" mnemonicParsing="false" text="Broccoli" />
+                              <RadioButton fx:id="rbtn_spinach" mnemonicParsing="false" text="Spinach" />
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="299.0" prefWidth="117.0">
                      <children>
-                        <VBox layoutX="-1.0" layoutY="-2.0" prefHeight="300.0" prefWidth="117.0">
+                        <VBox fx:id="vbox_grains" layoutX="-1.0" layoutY="-2.0" prefHeight="300.0" prefWidth="117.0">
                            <children>
-                              <RadioButton mnemonicParsing="false" text="pasta" />
+                              <RadioButton fx:id="rbtn_pasta" mnemonicParsing="false" text="pasta" />
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="299.0" prefWidth="117.0">
                      <children>
-                        <VBox layoutX="2.0" prefHeight="300.0" prefWidth="117.0">
+                        <VBox fx:id="vbox_protein" layoutX="2.0" prefHeight="300.0" prefWidth="117.0">
                            <children>
-                              <RadioButton mnemonicParsing="false" text="Chicken" />
+                              <RadioButton fx:id="rbtn_chicken" mnemonicParsing="false" text="Chicken" />
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="299.0" prefWidth="132.0">
                      <children>
-                        <VBox layoutX="6.0" prefHeight="307.0" prefWidth="119.0">
+                        <VBox fx:id="vbox_dairy" layoutX="6.0" prefHeight="307.0" prefWidth="119.0">
                            <children>
-                              <RadioButton mnemonicParsing="false" text="Cheese" />
+                              <RadioButton fx:id="rbtn_cheese" mnemonicParsing="false" text="Cheese" />
                            </children>
                         </VBox>
                      </children>

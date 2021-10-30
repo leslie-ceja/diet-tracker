@@ -6,15 +6,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class HelloController {
+
     @FXML
-    private Button btn_next;
+    private VBox vbox_fruit,vbox_vegetables, vbox_grains, vbox_protein, vbox_dairy;
 
     private Stage stage;
     private Scene scene;
@@ -22,8 +24,8 @@ public class HelloController {
 
     public void gotoFoodGroupView(ActionEvent event){
         try {
+            System.out.println(getRadioButtonInput());
             root = FXMLLoader.load(getClass().getResource("food-group-view.fxml"));
-            System.out.println(event.getSource());
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
@@ -31,6 +33,53 @@ public class HelloController {
         } catch(IOException e) {
             e.printStackTrace();
         }
+    }
+    public ArrayList<String> getRadioButtonInput(){
+        ArrayList<String> ingredientsSelected= new ArrayList<>();
+
+        RadioButton rbtn;
+
+        for(Node child: vbox_fruit.getChildren()){//LOOP THROUGH FRUITS
+            rbtn = (RadioButton) child;
+            if(rbtn.isSelected()){
+                System.out.println(rbtn.getText());
+                ingredientsSelected.add(rbtn.getText());//ADD SELECTED TO ARRAY LIST
+            }
+        }
+
+        for(Node child: vbox_vegetables.getChildren()){//LOOP THROUGH VEGETABLES
+            rbtn = (RadioButton) child;
+            if(rbtn.isSelected()){
+                System.out.println(rbtn.getText());
+                ingredientsSelected.add(rbtn.getText());//ADD SELECTED TO ARRAY LIST
+            }
+        }
+
+        for(Node child: vbox_grains.getChildren()){//LOOP THROUGH GRAINS
+            rbtn = (RadioButton) child;
+            if(rbtn.isSelected()){
+                System.out.println(rbtn.getText());
+                ingredientsSelected.add(rbtn.getText());//ADD SELECTED TO ARRAY LIST
+            }
+        }
+
+        for(Node child: vbox_protein.getChildren()){//LOOP THROUGH PROTEIN
+            rbtn = (RadioButton) child;
+            if(rbtn.isSelected()){
+                System.out.println(rbtn.getText());
+                ingredientsSelected.add(rbtn.getText());//ADD SELECTED TO ARRAY LIST
+            }
+        }
+
+        for(Node child: vbox_dairy.getChildren()){//LOOP THROUGH DAIRY
+            rbtn = (RadioButton) child;
+            if(rbtn.isSelected()){
+                System.out.println(rbtn.getText());
+                ingredientsSelected.add(rbtn.getText());//ADD SELECTED TO ARRAY LIST
+            }
+        }
+
+        return ingredientsSelected;
     }
 
 
