@@ -22,7 +22,19 @@ public class FoodGroupController {
     }
 
     public void setMissingFoodGroupsLabel(){
-        label_missing_food_groups.setText(label_missing_food_groups.getText() + meal.missingFoodGroups);
+        StringBuilder missing = new StringBuilder();
+
+        if(meal.missingFoodGroups.size() != 0){
+            for(int i=0; i<meal.missingFoodGroups.size();i++){
+                if(i == meal.missingFoodGroups.size()-1){
+                    missing.append(meal.missingFoodGroups.get(i));
+                }
+                else {
+                    missing.append(meal.missingFoodGroups.get(i)).append(", ");
+                }
+            }
+        }
+        label_missing_food_groups.setText(String.valueOf(missing));
     }
 
     public void displayIngredients(ArrayList<String> ingredients){
