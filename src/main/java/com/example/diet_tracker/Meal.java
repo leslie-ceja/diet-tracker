@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 public class Meal {
     private String name;
-    ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+    ArrayList<Ingredient> ingredients = new ArrayList<>();
+
+    ArrayList<String> includedFoodGroups = new ArrayList<>();
+    ArrayList<String> missingFoodGroups = new ArrayList<>();
 
     public Meal() {
         name = "undefined";
@@ -55,6 +58,32 @@ public class Meal {
 
     public ArrayList<Ingredient> getIngredients() {
         return ingredients;
+    }
+
+    public ArrayList<String> getFoodGroups(){
+        ArrayList<String> foodGroups = new ArrayList<>();
+        if(ingredients.size() != 0){
+            for (Ingredient ingredient : ingredients) {
+                foodGroups.add(ingredient.getFoodGroup());
+            }
+        }
+        return foodGroups;
+    }
+
+    public void setFoodGroups(){
+        String[] fiveFoodGroups = new String[]{"Fruits", "Vegetables", "Grains", "Protein", "Dairy"};
+        ArrayList<String> foodGroups = getFoodGroups();
+
+        if(foodGroups.size() != 0){
+            for(int i=0;i<fiveFoodGroups.length;i++){
+                if(foodGroups.contains(fiveFoodGroups[i])){
+                    includedFoodGroups.add(fiveFoodGroups[i]);
+                }
+                else {
+                    missingFoodGroups.add(fiveFoodGroups[i]);
+                }
+            }
+        }
     }
 
     @Override

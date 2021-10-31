@@ -11,6 +11,9 @@ public class FoodGroupController {
 
     public void printMeal(){
         System.out.println(meal);
+        meal.setFoodGroups();
+        System.out.println(meal.includedFoodGroups);
+        System.out.println(meal.missingFoodGroups);
     }
 
     public void displayIngredients(ArrayList<String> ingredients){

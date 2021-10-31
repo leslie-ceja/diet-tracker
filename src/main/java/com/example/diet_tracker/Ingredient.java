@@ -95,20 +95,20 @@ public class Ingredient {
             case "Strawberry" :
             case "Pineapple" :
             case "Mango" :
-                food_group = "fruits";
+                food_group = "Fruits";
                 break;
             case "Broccoli" :
             case "Spinach" :
-                food_group = "vegetables";
+                food_group = "Vegetables";
                 break;
             case "Chicken" :
-                food_group = "protein";
+                food_group = "Protein";
                 break;
             case "Pasta" :
-                food_group = "grains";
+                food_group = "Grains";
                 break;
             case "Cheese" :
-                food_group = "dairy";
+                food_group = "Dairy";
                 break;
             default:
                 food_group = "unknown";
