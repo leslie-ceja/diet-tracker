@@ -30,14 +30,12 @@ public class HelloController {
     public void gotoFoodGroupView(ActionEvent event){
         try {
 
-            ArrayList<String> ingredients = getRadioButtonInput();
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("food-group-view.fxml"));
             root = loader.load();
 
             FoodGroupController foodGroupController = loader.getController();
 
-            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());
+            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());//create meal object from user input
             foodGroupController.initializeMeal(meal);
             foodGroupController.initializeView();
 

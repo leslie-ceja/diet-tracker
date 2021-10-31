@@ -31,6 +31,9 @@ public class Ingredient {
     public Ingredient(String name, String foodGroup) {
         this.name = name;
         this.foodGroup = foodGroup;
+        this.protein = determineProtein(name);
+        this.carbs = determineCarbs(name);
+        this.fat = determineFat(name);
     }
 
     public Ingredient(String name,String foodGroup, int protein, int carbs, int fat) {

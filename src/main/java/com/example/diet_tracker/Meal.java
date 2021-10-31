@@ -5,22 +5,36 @@ import java.util.ArrayList;
 public class Meal {
     private String name;
     ArrayList<Ingredient> ingredients = new ArrayList<>();
+    private int proteinContent;
+    private int carbContent;
+    private int fatContent;
 
     ArrayList<String> includedFoodGroups = new ArrayList<>();
     ArrayList<String> missingFoodGroups = new ArrayList<>();
 
+
+
     public Meal() {
         name = "undefined";
+        proteinContent=0;
+        carbContent=0;
+        fatContent=0;
     }
 
     public Meal(String name){
         this.name = name;
+        proteinContent=0;
+        carbContent=0;
+        fatContent=0;
     }
 
     public Meal(String name, ArrayList<String> ingredients){
         this.name = name;
         addIngredients(ingredients);
         setFoodGroups();
+        this.proteinContent = determineProteinContent();
+        this.carbContent = determineCarbContent();
+        this.fatContent = determineFatContent();
     }
 
     //COPY CONSTRUCTOR
@@ -28,6 +42,9 @@ public class Meal {
         this.name = object.name;
         this.ingredients = object.getIngredients();
         setFoodGroups();
+        this.proteinContent = determineProteinContent();
+        this.carbContent = determineCarbContent();
+        this.fatContent = determineFatContent();
     }
 
     public void addIngredient(String name, String foodGroup){
@@ -86,6 +103,48 @@ public class Meal {
                 }
             }
         }
+    }
+
+    public int determineProteinContent(){
+        int proteinContent=0;
+        if(ingredients.size() != 0){
+            for(Ingredient ingredient : ingredients){
+                proteinContent += ingredient.getProtein();
+            }
+        }
+        return proteinContent;
+    }
+
+    public int determineCarbContent(){
+        int carbContent=0;
+        if(ingredients.size() != 0){
+            for(Ingredient ingredient : ingredients){
+                carbContent += ingredient.getCarbs();
+            }
+        }
+        return carbContent;
+    }
+
+    public int determineFatContent(){
+        int fatContent=0;
+        if(ingredients.size() != 0){
+            for(Ingredient ingredient : ingredients){
+                fatContent += ingredient.getFat();
+            }
+        }
+        return fatContent;
+    }
+
+    public int getProteinContent(){
+        return proteinContent;
+    }
+
+    public int getCarbContent(){
+        return carbContent;
+    }
+
+    public int getFatContent(){
+        return fatContent;
     }
 
     @Override

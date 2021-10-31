@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diet_tracker.MacroController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diet_tracker.MacroController">
    <children>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #32a852;" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #32a852;">
+         <children>
+            <Label layoutX="20.0" layoutY="15.0" text="Your meal contained the following ratio of macronutrients:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_next" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Next" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="303.0" prefWidth="600.0">
+         <children>
+            <PieChart fx:id="pc_macros" labelsVisible="false" layoutX="125.0" legendSide="LEFT" prefHeight="302.0" prefWidth="350.0" title="Macronutrient Content" />
+         </children></AnchorPane>
    </children>
 </VBox>
