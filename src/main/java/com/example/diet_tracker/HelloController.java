@@ -42,6 +42,7 @@ public class HelloController {
 
             foodGroupController.initializeMeal(meal);
             foodGroupController.printMeal();
+            foodGroupController.setMissingFoodGroupsLabel();
 
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);

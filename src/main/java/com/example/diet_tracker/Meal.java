@@ -20,12 +20,14 @@ public class Meal {
     public Meal(String name, ArrayList<String> ingredients){
         this.name = name;
         addIngredients(ingredients);
+        setFoodGroups();
     }
 
     //COPY CONSTRUCTOR
     public Meal(Meal object){
         this.name = object.name;
         this.ingredients = object.getIngredients();
+        setFoodGroups();
     }
 
     public void addIngredient(String name, String foodGroup){

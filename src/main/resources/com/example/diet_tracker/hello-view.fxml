@@ -14,7 +14,7 @@
                </font>
             </Label>
             <Button fx:id="btn_next" layoutX="525.0" layoutY="54.0" mnemonicParsing="false" onAction="#gotoFoodGroupView" text="Next" />
-            <Label layoutX="22.0" layoutY="22.0" text="Meal Name">
+            <Label layoutX="23.0" layoutY="22.0" text="Meal Name">
                <font>
                   <Font size="18.0" />
                </font>
