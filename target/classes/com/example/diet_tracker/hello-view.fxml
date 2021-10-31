@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diet_tracker.HelloController">
    <children>
-      <AnchorPane prefHeight="101.0" prefWidth="587.0">
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #32a852;">
          <children>
-            <Label layoutX="23.0" layoutY="53.0" text="Select your ingredients">
+            <Label layoutX="20.0" layoutY="50.0" text="Select your ingredients" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btn_next" layoutX="525.0" layoutY="54.0" mnemonicParsing="false" onAction="#gotoFoodGroupView" text="Next" />
-            <Label layoutX="23.0" layoutY="22.0" text="Meal Name">
+            <Button fx:id="btn_next" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" onAction="#gotoFoodGroupView" style="-fx-background-color: #ffffff;" text="Next" />
+            <Label layoutX="20.0" layoutY="15.0" text="Meal Name" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_meal_name" layoutX="130.0" layoutY="23.0" />
+            <TextField fx:id="tf_meal_name" layoutX="128.0" layoutY="16.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="286.0" prefWidth="601.0">
          <children>
             <HBox layoutY="-1.0" prefHeight="299.0" prefWidth="601.0">
                <children>
-                  <AnchorPane prefHeight="300.0" prefWidth="82.0">
+                  <AnchorPane prefHeight="299.0" prefWidth="118.0">
                      <children>
-                        <VBox fx:id="vbox_fruit" layoutX="7.0" layoutY="-2.0" prefHeight="300.0" prefWidth="110.0">
+                        <VBox fx:id="vbox_fruit" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
                               <RadioButton fx:id="rbtn_apple" mnemonicParsing="false" text="Apple" />
                               <RadioButton fx:id="rbtn_banana" mnemonicParsing="false" text="Banana" />
@@ -42,43 +43,58 @@
                               <RadioButton fx:id="rbtn_pineapple" mnemonicParsing="false" text="Pineapple" />
                               <RadioButton fx:id="rbtn_mango" mnemonicParsing="false" text="Mango" />
                            </children>
+                           <padding>
+                              <Insets left="3.0" top="5.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="300.0" prefWidth="102.0">
+                  <AnchorPane prefHeight="299.0" prefWidth="118.0">
                      <children>
-                        <VBox fx:id="vbox_vegetables" prefHeight="300.0" prefWidth="114.0">
+                        <VBox fx:id="vbox_vegetables" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
                               <RadioButton fx:id="rbtn_broccoli" mnemonicParsing="false" text="Broccoli" />
                               <RadioButton fx:id="rbtn_spinach" mnemonicParsing="false" text="Spinach" />
                            </children>
+                           <padding>
+                              <Insets left="3.0" top="5.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="299.0" prefWidth="117.0">
+                  <AnchorPane prefHeight="299.0" prefWidth="118.0">
                      <children>
-                        <VBox fx:id="vbox_grains" layoutX="-1.0" layoutY="-2.0" prefHeight="300.0" prefWidth="117.0">
+                        <VBox fx:id="vbox_grains" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
                               <RadioButton fx:id="rbtn_pasta" mnemonicParsing="false" text="Pasta" />
                            </children>
+                           <padding>
+                              <Insets left="3.0" top="5.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="299.0" prefWidth="117.0">
+                  <AnchorPane prefHeight="299.0" prefWidth="118.0">
                      <children>
-                        <VBox fx:id="vbox_protein" layoutX="2.0" prefHeight="300.0" prefWidth="117.0">
+                        <VBox fx:id="vbox_protein" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
                               <RadioButton fx:id="rbtn_chicken" mnemonicParsing="false" text="Chicken" />
                            </children>
+                           <padding>
+                              <Insets left="3.0" top="5.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="299.0" prefWidth="132.0">
+                  <AnchorPane prefHeight="299.0" prefWidth="118.0">
                      <children>
-                        <VBox fx:id="vbox_dairy" layoutX="6.0" prefHeight="307.0" prefWidth="119.0">
+                        <VBox fx:id="vbox_dairy" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
                               <RadioButton fx:id="rbtn_cheese" mnemonicParsing="false" text="Cheese" />
                            </children>
+                           <padding>
+                              <Insets left="3.0" top="5.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </AnchorPane>

@@ -1,6 +1,7 @@
 package com.example.diet_tracker;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 
 import java.util.ArrayList;
@@ -9,10 +10,19 @@ public class FoodGroupController {
     @FXML
     private Label label_missing_food_groups;
 
+    @FXML
+    private CheckBox cb_fruits, cb_vegetables, cb_grains, cb_protein, cb_dairy;
+
     Meal meal;
 
     public void initializeMeal(Meal object){
         meal = new Meal(object);
+    }
+
+    public void initializeView(){
+        printMeal();
+        setMissingFoodGroupsLabel();
+        setFoodGroupCheckBoxes();
     }
 
     public void printMeal(){
@@ -40,5 +50,14 @@ public class FoodGroupController {
     public void displayIngredients(ArrayList<String> ingredients){
         System.out.println("DISPLAY ING FUNC");
         System.out.println(ingredients);
+    }
+
+    public void setFoodGroupCheckBoxes(){
+        String missing = label_missing_food_groups.getText();
+        cb_fruits.setSelected(missing.contains("Fruits"));
+        cb_vegetables.setSelected(missing.contains("Vegetables"));
+        cb_grains.setSelected(missing.contains("Grains"));
+        cb_protein.setSelected(missing.contains("Protein"));
+        cb_dairy.setSelected(missing.contains("Dairy"));
     }
 }

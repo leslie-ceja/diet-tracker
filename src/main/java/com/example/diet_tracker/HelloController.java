@@ -33,16 +33,13 @@ public class HelloController {
             ArrayList<String> ingredients = getRadioButtonInput();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("food-group-view.fxml"));
-
             root = loader.load();
-
-            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());
 
             FoodGroupController foodGroupController = loader.getController();
 
+            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());
             foodGroupController.initializeMeal(meal);
-            foodGroupController.printMeal();
-            foodGroupController.setMissingFoodGroupsLabel();
+            foodGroupController.initializeView();
 
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
