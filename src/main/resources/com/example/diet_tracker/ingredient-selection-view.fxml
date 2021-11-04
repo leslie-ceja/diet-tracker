@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diet_tracker.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diet_tracker.IngredientSelectionController">
    <children>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #32a852;">
+      <AnchorPane prefHeight="100.0" prefWidth="590.0" style="-fx-background-color: #32a852;">
          <children>
             <Label layoutX="20.0" layoutY="50.0" text="Select your ingredients" textFill="WHITE">
                <font>
@@ -21,6 +21,7 @@
                </font>
             </Label>
             <TextField fx:id="tf_meal_name" layoutX="128.0" layoutY="16.0" />
+            <ChoiceBox fx:id="cb_time" layoutX="225.0" layoutY="51.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="286.0" prefWidth="601.0">
@@ -38,7 +39,7 @@
                               <RadioButton fx:id="rbtn_pear" mnemonicParsing="false" text="Pear" />
                               <RadioButton fx:id="rbtn_grapes" mnemonicParsing="false" text="Grapes" />
                               <RadioButton fx:id="rbtn_watermelon" mnemonicParsing="false" text="Watermelon" />
-                              <RadioButton fx:id="rbtn_watermelon" mnemonicParsing="false" text="Pomegranate" />
+                              <RadioButton fx:id="rbtn_pomegranate" mnemonicParsing="false" text="Pomegranate" />
                               <RadioButton fx:id="rbtn_strawberry" mnemonicParsing="false" text="Strawberry" />
                               <RadioButton fx:id="rbtn_pineapple" mnemonicParsing="false" text="Pineapple" />
                               <RadioButton fx:id="rbtn_mango" mnemonicParsing="false" text="Mango" />

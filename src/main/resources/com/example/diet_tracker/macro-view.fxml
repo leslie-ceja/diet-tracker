@@ -14,7 +14,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btn_next" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Next" />
+            <Button fx:id="btn_save" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Save" />
          </children></AnchorPane>
       <AnchorPane prefHeight="303.0" prefWidth="600.0">
          <children>

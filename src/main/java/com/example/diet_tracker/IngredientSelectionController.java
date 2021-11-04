@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class HelloController {
+public class IngredientSelectionController {
 
     @FXML
     private VBox vbox_fruit,vbox_vegetables, vbox_grains, vbox_protein, vbox_dairy;
@@ -36,6 +36,7 @@ public class HelloController {
             FoodGroupController foodGroupController = loader.getController();
 
             Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());//create meal object from user input
+            Singleton.getSingleton().meals.add(meal);
             foodGroupController.initializeMeal(meal);
             foodGroupController.initializeView();
 

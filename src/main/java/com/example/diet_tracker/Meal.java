@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Meal {
     private String name;
+    private String time;
+    private int calories;
     ArrayList<Ingredient> ingredients = new ArrayList<>();
     private int proteinContent;
     private int carbContent;
@@ -16,6 +18,8 @@ public class Meal {
 
     public Meal() {
         name = "undefined";
+        time = "";
+        calories=0;
         proteinContent=0;
         carbContent=0;
         fatContent=0;
@@ -23,6 +27,8 @@ public class Meal {
 
     public Meal(String name){
         this.name = name;
+        time = "";
+        calories =0;
         proteinContent=0;
         carbContent=0;
         fatContent=0;
@@ -133,6 +139,30 @@ public class Meal {
             }
         }
         return fatContent;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public int getCalories() {
+        return calories;
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
     }
 
     public int getProteinContent(){

@@ -4,6 +4,7 @@ module com.example.diet_tracker {
 
     requires org.kordamp.bootstrapfx.core;
     requires javafx.graphics;
+    requires java.sql;
 
     opens com.example.diet_tracker to javafx.fxml;
     exports com.example.diet_tracker;
