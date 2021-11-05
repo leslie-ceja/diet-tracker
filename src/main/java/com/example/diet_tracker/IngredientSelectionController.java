@@ -1,14 +1,14 @@
 package com.example.diet_tracker;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -19,6 +19,12 @@ public class IngredientSelectionController {
 
     @FXML
     private VBox vbox_fruit,vbox_vegetables, vbox_grains, vbox_protein, vbox_dairy;
+
+    @FXML
+    private ChoiceBox cb_time;
+
+    @FXML
+    private DatePicker dp_date;
 
     @FXML
     private TextField tf_meal_name;
@@ -48,6 +54,15 @@ public class IngredientSelectionController {
         } catch(IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void initialize(){
+        initializeTimeChoiceBox();
+    }
+
+    public void initializeTimeChoiceBox(){
+        ObservableList<String> choiceBoxData = FXCollections.observableArrayList("Breakfast", "Morning Snack", "Lunch", "Afternoon Snack", "Dinner", "Evening Snack");
+        cb_time.setItems(choiceBoxData);
     }
 
     public ArrayList<String> getRadioButtonInput(){

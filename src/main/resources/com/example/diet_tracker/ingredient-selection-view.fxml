@@ -9,19 +9,25 @@
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="590.0" style="-fx-background-color: #32a852;">
          <children>
-            <Label layoutX="20.0" layoutY="50.0" text="Select your ingredients" textFill="WHITE">
+            <Label layoutX="20.0" layoutY="50.0" text="Select your ingredients below" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <Button fx:id="btn_next" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" onAction="#gotoFoodGroupView" style="-fx-background-color: #ffffff;" text="Next" />
-            <Label layoutX="20.0" layoutY="15.0" text="Meal Name" textFill="WHITE">
+            <Label layoutX="20.0" layoutY="15.0" text="Meal Name:" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <TextField fx:id="tf_meal_name" layoutX="128.0" layoutY="16.0" />
-            <ChoiceBox fx:id="cb_time" layoutX="225.0" layoutY="51.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cb_time" layoutX="341.0" layoutY="16.0" prefWidth="150.0" />
+            <Label layoutX="292.0" layoutY="15.0" text="Time:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dp_date" layoutX="317.0" layoutY="51.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="286.0" prefWidth="601.0">
