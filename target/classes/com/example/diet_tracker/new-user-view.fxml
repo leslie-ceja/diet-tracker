@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diet_tracker.NewUserController">
+   <children>
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #32a852;" />
+      <AnchorPane prefHeight="301.0" prefWidth="600.0">
+         <children>
+            <ChoiceBox fx:id="cb_sex" layoutX="50.0" layoutY="50.0" prefWidth="150.0" />
+            <Label layoutX="50.0" layoutY="20.0" text="Sex:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="80.0" text="Age:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cb_age" layoutX="50.0" layoutY="110.0" prefWidth="150.0" />
+            <Label layoutX="50.0" layoutY="140.0" text="Weight:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cb_weight" layoutX="50.0" layoutY="170.0" prefWidth="150.0" />
+            <Label layoutX="48.0" layoutY="207.0" text="Height:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cb_activity_level" layoutX="300.0" layoutY="50.0" prefWidth="150.0" />
+            <Label layoutX="300.0" layoutY="20.0" text="Activity Level:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cb_height_ft" layoutX="50.0" layoutY="234.0" prefHeight="25.0" prefWidth="72.0" />
+            <ChoiceBox fx:id="cb_height_in" layoutX="128.0" layoutY="234.0" prefHeight="25.0" prefWidth="72.0" />
+         </children></AnchorPane>
+   </children>
+</VBox>
