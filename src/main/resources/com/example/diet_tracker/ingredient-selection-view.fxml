@@ -14,7 +14,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btn_next" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" onAction="#gotoFoodGroupView" style="-fx-background-color: #ffffff;" text="Next" />
+            <Button fx:id="btn_next" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Next" />
             <Label layoutX="20.0" layoutY="15.0" text="Meal Name:" textFill="WHITE">
                <font>
                   <Font size="18.0" />

@@ -20,6 +20,8 @@ public class IngredientSelectionController {
     @FXML
     private VBox vbox_fruit,vbox_vegetables, vbox_grains, vbox_protein, vbox_dairy;
 
+    @FXML Button btn_next;
+
     @FXML
     private ChoiceBox cb_time;
 
@@ -28,12 +30,36 @@ public class IngredientSelectionController {
 
     @FXML
     private TextField tf_meal_name;
-
+    /*
     private Stage stage;
     private Scene scene;
     private Parent root;
+    */
+    public void initialize(){
+        initializeTimeChoiceBox();
+        initializeNextButton();
+    }
+
+    public void initializeTimeChoiceBox(){
+        ObservableList<String> choiceBoxData = FXCollections.observableArrayList("Breakfast", "Morning Snack", "Lunch", "Afternoon Snack", "Dinner", "Evening Snack");
+        cb_time.setItems(choiceBoxData);
+    }
+
+    public void initializeNextButton(){
+        btn_next.setOnAction(actionEvent ->{
+            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());//create meal object from user input
+            //Singleton.getSingleton().meals.add(meal);
+
+            Singleton.getSingleton().getMealList().addMeal(meal);
+
+            FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("food-group-view.fxml");
+            Singleton.getSingleton().switchScene(btn_next, fxmlLoader);
+            System.out.println(Singleton.getSingleton().getMealList().getMeals());
+        });
+    }
 
     public void gotoFoodGroupView(ActionEvent event){
+        /*
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("food-group-view.fxml"));
@@ -54,16 +80,13 @@ public class IngredientSelectionController {
         } catch(IOException e) {
             e.printStackTrace();
         }
+        */
+
     }
 
-    public void initialize(){
-        initializeTimeChoiceBox();
-    }
 
-    public void initializeTimeChoiceBox(){
-        ObservableList<String> choiceBoxData = FXCollections.observableArrayList("Breakfast", "Morning Snack", "Lunch", "Afternoon Snack", "Dinner", "Evening Snack");
-        cb_time.setItems(choiceBoxData);
-    }
+
+
 
     public ArrayList<String> getRadioButtonInput(){
         ArrayList<String> ingredientsSelected= new ArrayList<>();

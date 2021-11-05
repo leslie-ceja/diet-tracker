@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Singleton {
     private static Singleton singleton = new Singleton();
     public ArrayList<Meal> meals = new ArrayList<>();
+    private MealList mealList = new MealList();
 
     private Singleton(){
 
@@ -36,5 +37,7 @@ public class Singleton {
         stage.setScene(scene);
     }
 
-
+    public MealList getMealList() {
+        return mealList;
+    }
 }
