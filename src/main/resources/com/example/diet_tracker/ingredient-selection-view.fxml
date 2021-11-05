@@ -33,16 +33,16 @@
                         <VBox fx:id="vbox_fruit" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
                               <RadioButton fx:id="rbtn_apple" mnemonicParsing="false" text="Apple" />
+                              <RadioButton fx:id="rbtn_avocado" mnemonicParsing="false" text="Avocado" />
                               <RadioButton fx:id="rbtn_banana" mnemonicParsing="false" text="Banana" />
+                              <RadioButton fx:id="rbtn_grapes" mnemonicParsing="false" text="Grapes" />
+                              <RadioButton fx:id="rbtn_kiwi" mnemonicParsing="false" text="Kiwi" />
                               <RadioButton fx:id="rbtn_orange" mnemonicParsing="false" text="Orange" />
                               <RadioButton fx:id="rbtn_peach" mnemonicParsing="false" text="Peach" />
                               <RadioButton fx:id="rbtn_pear" mnemonicParsing="false" text="Pear" />
-                              <RadioButton fx:id="rbtn_grapes" mnemonicParsing="false" text="Grapes" />
-                              <RadioButton fx:id="rbtn_watermelon" mnemonicParsing="false" text="Watermelon" />
-                              <RadioButton fx:id="rbtn_pomegranate" mnemonicParsing="false" text="Pomegranate" />
-                              <RadioButton fx:id="rbtn_strawberry" mnemonicParsing="false" text="Strawberry" />
                               <RadioButton fx:id="rbtn_pineapple" mnemonicParsing="false" text="Pineapple" />
-                              <RadioButton fx:id="rbtn_mango" mnemonicParsing="false" text="Mango" />
+                              <RadioButton fx:id="rbtn_strawberry" mnemonicParsing="false" text="Strawberry" />
+                              <RadioButton fx:id="rbtn_watermelon" mnemonicParsing="false" text="Watermelon" />
                            </children>
                            <padding>
                               <Insets left="3.0" top="5.0" />
@@ -54,8 +54,17 @@
                      <children>
                         <VBox fx:id="vbox_vegetables" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
+                              <RadioButton fx:id="rbtn_asparagus" mnemonicParsing="false" text="Asparagus" />
+                              <RadioButton fx:id="rbtn_bell_pepper" mnemonicParsing="false" text="Bell Pepper" />
                               <RadioButton fx:id="rbtn_broccoli" mnemonicParsing="false" text="Broccoli" />
-                              <RadioButton fx:id="rbtn_spinach" mnemonicParsing="false" text="Spinach" />
+                              <RadioButton fx:id="rbtn_carrot" mnemonicParsing="false" text="Carrot" />
+                              <RadioButton fx:id="rbtn_cauliflower" mnemonicParsing="false" text="Cauliflower" />
+                              <RadioButton fx:id="rbtn_lettuce" mnemonicParsing="false" text="Lettuce" />
+                              <RadioButton fx:id="rbtn_mushroom" mnemonicParsing="false" text="Mushroom" />
+                              <RadioButton fx:id="rbtn_onion" mnemonicParsing="false" text="Onion" />
+                              <RadioButton fx:id="rbtn_potato" mnemonicParsing="false" text="Potato" />
+                              <RadioButton fx:id="rbtn_squash" mnemonicParsing="false" text="Squash" />
+                              <RadioButton fx:id="rbtn_tomato" mnemonicParsing="false" text="Tomato" />
                            </children>
                            <padding>
                               <Insets left="3.0" top="5.0" />
@@ -67,7 +76,13 @@
                      <children>
                         <VBox fx:id="vbox_grains" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
+                              <RadioButton fx:id="rbtn_brown_rice" mnemonicParsing="false" text="Brown Rice" />
+                              <RadioButton fx:id="rbtn_oats" mnemonicParsing="false" text="Oats" />
                               <RadioButton fx:id="rbtn_pasta" mnemonicParsing="false" text="Pasta" />
+                              <RadioButton fx:id="rbtn_quinoa" mnemonicParsing="false" text="Quinoa" />
+                              <RadioButton fx:id="rbtn_white_rice" mnemonicParsing="false" text="White Rice" />
+                              <RadioButton fx:id="rbtn_white_bread" mnemonicParsing="false" text="White Bread" />
+                              <RadioButton fx:id="rbtn_whole_wheat" mnemonicParsing="false" prefHeight="39.0" prefWidth="96.0" text="Whole Wheat Bread" wrapText="true" />
                            </children>
                            <padding>
                               <Insets left="3.0" top="5.0" />
@@ -79,7 +94,14 @@
                      <children>
                         <VBox fx:id="vbox_protein" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
+                              <RadioButton fx:id="rbtn_almonds" mnemonicParsing="false" text="Almonds" />
+                              <RadioButton fx:id="rbtn_beef" mnemonicParsing="false" text="Beef" />
                               <RadioButton fx:id="rbtn_chicken" mnemonicParsing="false" text="Chicken" />
+                              <RadioButton fx:id="rbtn_egg" mnemonicParsing="false" text="Egg" />
+                              <RadioButton fx:id="rbtn_salmon" mnemonicParsing="false" text="Salmon" />
+                              <RadioButton fx:id="rbtn_shrimp" mnemonicParsing="false" text="Shrimp" />
+                              <RadioButton fx:id="rbtn_tilapia" mnemonicParsing="false" text="Tilapia" />
+                              <RadioButton fx:id="rbtn_tuna" mnemonicParsing="false" text="Tuna" />
                            </children>
                            <padding>
                               <Insets left="3.0" top="5.0" />
@@ -91,7 +113,12 @@
                      <children>
                         <VBox fx:id="vbox_dairy" layoutX="12.0" layoutY="12.0" prefHeight="280.0" prefWidth="99.0" spacing="5.0">
                            <children>
+                              <RadioButton fx:id="rbtn_butter" mnemonicParsing="false" text="Butter" />
                               <RadioButton fx:id="rbtn_cheese" mnemonicParsing="false" text="Cheese" />
+                              <RadioButton fx:id="rbtn_ice_cream" mnemonicParsing="false" text="Ice Cream" />
+                              <RadioButton fx:id="rbtn_milk" mnemonicParsing="false" text="Milk" />
+                              <RadioButton fx:id="rbtn_sour_cream" mnemonicParsing="false" text="Sour Cream" />
+                              <RadioButton fx:id="rbtn_sour_cream" mnemonicParsing="false" text="Yogurt" />
                            </children>
                            <padding>
                               <Insets left="3.0" top="5.0" />
