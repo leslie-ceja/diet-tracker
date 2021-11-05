@@ -27,6 +27,10 @@ public class FoodGroupController {
     private Scene scene;
     private Parent root;
 
+    public void initialize(){
+        initializeMeal(Singleton.getSingleton().getMealList().getLastMeal());
+        initializeView();
+    }
     public void initializeMeal(Meal object){
         meal = new Meal(object);
     }

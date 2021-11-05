@@ -19,7 +19,7 @@ public class MacroController {
 
     @FXML
     public void initialize(){
-        btn_save.setOnAction(e->{
+        btn_save.setOnAction(event->{
             FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("home-view.fxml");
             Singleton.getSingleton().switchScene(btn_save,fxmlLoader);
         });

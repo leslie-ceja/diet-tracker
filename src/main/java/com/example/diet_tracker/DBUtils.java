@@ -13,7 +13,7 @@ import java.sql.*;
 import java.util.Objects;
 
 public class DBUtils {
-    public static void changeScene(ActionEvent event, String fxmlFile, String title, String username){
+    public static void changeScene(ActionEvent event, String fxmlFile, String username){
         Parent root = null;
 
         if(username != null){ //button_login passes in valid username + logged-in.fxml
@@ -34,7 +34,6 @@ public class DBUtils {
             }
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle(title);
         stage.setScene(new Scene(root,600,400));
         stage.show();
     }
@@ -58,7 +57,7 @@ public class DBUtils {
                 while(resultSet.next()) {//moves cursor forward one row
                     String retrievedPassword = resultSet.getString("password");
                     if(retrievedPassword.equals(password)){
-                        changeScene(event, "home-view.fxml", "Welcome!", username);
+                        changeScene(event, "home-view.fxml", username);
                     } else {
                         System.out.println("Passwords did not match!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -95,5 +94,60 @@ public class DBUtils {
         }
     }
 
+    public static void signUpUser(ActionEvent event, String username, String password){
+        Connection connection = null;
+        PreparedStatement psInsert = null;
+        PreparedStatement psCheckUserExists = null;
+        ResultSet resultSet = null;
 
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-app", "root", "Songforyou21");
+            psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username + ?");
+            psCheckUserExists.setString(1, username);
+            resultSet = psCheckUserExists.executeQuery();
+
+            if(resultSet.isBeforeFirst()) {
+                System.out.println("User already exists!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("You cannot user this username.");
+                alert.show();
+            } else {
+                psInsert = connection.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
+                psInsert.setString(1, username);
+                psInsert.setString(2, password);
+                psInsert.executeUpdate();
+
+                changeScene(event, "logged-in.fxml", username);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if(resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch(SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(psCheckUserExists != null) {
+                try {
+                    psCheckUserExists.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void closeConnection(){
+
+    }
 }
