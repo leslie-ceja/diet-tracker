@@ -35,7 +35,7 @@ public class SignupController {
         btn_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "Log in!", null);
+                DBUtils.changeScene(actionEvent, "login-view.fxml", null);
             }
         });
     }

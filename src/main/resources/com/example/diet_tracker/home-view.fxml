@@ -13,6 +13,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Button fx:id="btn_profile" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Profile" />
+            <Label fx:id="label_update" layoutX="345.0" layoutY="53.0" text="Please update your profile &gt;&gt;" textFill="#a40303">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
       <AnchorPane prefHeight="304.0" prefWidth="600.0">
          <children>
@@ -23,7 +29,7 @@
                   <TableColumn fx:id="calorie_col" prefWidth="87.0" text="Calories" />
               </columns>
             </TableView>
-            <Button layoutX="234.0" layoutY="250.0" mnemonicParsing="false" style="-fx-background-color: #32a852;" text="Add Item" textFill="WHITE" />
+            <Button fx:id="btn_add_item" layoutX="234.0" layoutY="250.0" mnemonicParsing="false" style="-fx-background-color: #32a852;" text="Add Item" textFill="WHITE" />
          </children></AnchorPane>
    </children>
 </VBox>

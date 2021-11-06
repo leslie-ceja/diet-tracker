@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Singleton {
     private static Singleton singleton = new Singleton();
     public ArrayList<Meal> meals = new ArrayList<>();
+    private User user = new User();
     private MealList mealList = new MealList();
 
     private Singleton(){
@@ -39,5 +40,13 @@ public class Singleton {
 
     public MealList getMealList() {
         return mealList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -48,7 +48,6 @@ public class IngredientSelectionController {
     public void initializeNextButton(){
         btn_next.setOnAction(actionEvent ->{
             Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());//create meal object from user input
-            //Singleton.getSingleton().meals.add(meal);
 
             Singleton.getSingleton().getMealList().addMeal(meal);
 

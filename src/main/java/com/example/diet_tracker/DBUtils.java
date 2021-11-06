@@ -13,22 +13,25 @@ import java.sql.*;
 import java.util.Objects;
 
 public class DBUtils {
+
+    private static Connection connection = null;
+
     public static void changeScene(ActionEvent event, String fxmlFile, String username){
         Parent root = null;
 
         if(username != null){ //button_login passes in valid username + logged-in.fxml
             try {
+                Singleton.getSingleton().getUser().setUsername(username);//set username
 
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
-                HomeController homeController = loader.getController();
-                homeController.setUserInformation(username);//THROWING EXCEPTION B/C CONTROLLED WAS NULL
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else { //button_signup passes in null username + sign-up.fxml
+        } else { //button_signup passes in null username + signup-view.fxml
             try {
-                root = FXMLLoader.load(Objects.requireNonNull(DBUtils.class.getResource(fxmlFile)));
+                root = FXMLLoader.load(Objects.requireNonNull(DBUtils.class.getResource(fxmlFile)));//EXCEPTION HERE
             } catch(IOException e) {
                 e.printStackTrace();
             }
@@ -38,13 +41,21 @@ public class DBUtils {
         stage.show();
     }
 
+    public static void startConnection(){
+        //Create connection to database
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-app", "root", "Songforyou21");
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void logInUser(ActionEvent event, String username, String password){
-        Connection connection = null;
+        startConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-app", "root", "Songforyou21");
             preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
@@ -84,24 +95,17 @@ public class DBUtils {
                     e.printStackTrace();
                 }
             }
-            if(connection != null) {
-                try {
-                    connection.close();
-                } catch(SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            closeConnection();
         }
     }
 
     public static void signUpUser(ActionEvent event, String username, String password){
-        Connection connection = null;
+        startConnection();
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-app", "root", "Songforyou21");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username + ?");
             psCheckUserExists.setString(1, username);
             resultSet = psCheckUserExists.executeQuery();
@@ -137,17 +141,17 @@ public class DBUtils {
                     e.printStackTrace();
                 }
             }
-            if(connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
+            closeConnection();
         }
     }
 
-    public void closeConnection(){
-
+    public static void closeConnection(){
+        if(connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
     }
 }

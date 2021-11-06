@@ -6,10 +6,18 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diet_tracker.NewUserController">
    <children>
-      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #32a852;" />
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #32a852;">
+         <children>
+            <Label layoutX="260.0" layoutY="37.0" text="My Profile" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_done" layoutX="534.0" layoutY="52.0" mnemonicParsing="false" onAction="#doneButtonListener" style="-fx-background-color: #ffffff;" text="Done" />
+         </children></AnchorPane>
       <AnchorPane prefHeight="301.0" prefWidth="600.0">
          <children>
-            <ChoiceBox fx:id="cb_sex" layoutX="50.0" layoutY="50.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cb_sex" layoutX="50.0" layoutY="50.0" prefHeight="25.0" prefWidth="184.0" />
             <Label layoutX="50.0" layoutY="20.0" text="Sex:">
                <font>
                   <Font size="18.0" />
@@ -20,26 +28,65 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="cb_age" layoutX="50.0" layoutY="110.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cb_age" layoutX="50.0" layoutY="110.0" prefHeight="25.0" prefWidth="184.0" />
             <Label layoutX="50.0" layoutY="140.0" text="Weight:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="cb_weight" layoutX="50.0" layoutY="170.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cb_weight" layoutX="50.0" layoutY="170.0" prefHeight="25.0" prefWidth="184.0" />
             <Label layoutX="48.0" layoutY="207.0" text="Height:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="cb_activity_level" layoutX="300.0" layoutY="50.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cb_activity_level" layoutX="300.0" layoutY="50.0" prefHeight="25.0" prefWidth="184.0" />
             <Label layoutX="300.0" layoutY="20.0" text="Activity Level:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="cb_height_ft" layoutX="50.0" layoutY="234.0" prefHeight="25.0" prefWidth="72.0" />
-            <ChoiceBox fx:id="cb_height_in" layoutX="128.0" layoutY="234.0" prefHeight="25.0" prefWidth="72.0" />
+            <ChoiceBox fx:id="cb_height_in" layoutX="142.0" layoutY="234.0" prefHeight="25.0" prefWidth="72.0" />
+            <Label layoutX="122.0" layoutY="233.0" text="ft">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="214.0" layoutY="233.0" text="in">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="300.0" layoutY="95.0" prefHeight="139.0" prefWidth="271.0" style="-fx-background-color: #32a852;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Basal Metabolic Rate:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_bmr" layoutX="14.0" layoutY="43.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="70.0" text="Caloric Need:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_caloric_need" layoutX="14.0" layoutY="97.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label fx:id="label_missing_information" layoutX="300.0" layoutY="250.0" prefHeight="43.0" prefWidth="271.0" text="* Please fill out all the information before continuing" textFill="#a40303" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </children>
 </VBox>

@@ -33,7 +33,7 @@ public class LoginController {
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "sign-up.fxml", null);
+                DBUtils.changeScene(actionEvent, "signup-view.fxml", null);
             }
         });
     }
