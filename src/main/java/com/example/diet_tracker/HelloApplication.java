@@ -22,7 +22,7 @@ public class HelloApplication extends Application {
 
     public void stop(){
         System.out.println("STOP FUNCTION");
-        //DBUtils.closeConnection();
+        DBUtils.closeConnection();
     }
 
     public static void main(String[] args) {

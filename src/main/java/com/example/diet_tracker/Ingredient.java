@@ -1,11 +1,11 @@
 package com.example.diet_tracker;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Ingredient {
     private String name;
     private String foodGroup;
+    private int calories;
     private int protein;
     private int carbs;
     private int fat;
@@ -13,6 +13,7 @@ public class Ingredient {
     public Ingredient() {
         name = "unknown";
         foodGroup = "unknown";
+        calories = 0;
         protein = 0;
         carbs = 0;
         fat =0;
@@ -20,14 +21,22 @@ public class Ingredient {
 
     public Ingredient(String name){
         this.name = name;
-        //DETERMINE FOOD GROUP
+        foodGroup = "unknown";
+        calories = 0;
+        protein = 0;
+        carbs = 0;
+        fat =0;
+        //NO LONGER NEED THESE METHODS >> THESE METHODS USED FAKE VALUES
+        //WE ARE NOW USING VALUES FROM DATABASE
+        /*
         this.foodGroup = determineFoodGroup(name);
-        //DETERMINE MACROS
         this.protein = determineProtein(name);
         this.carbs = determineCarbs(name);
         this.fat = determineFat(name);
+        */
     }
 
+    /*
     public Ingredient(String name, String foodGroup) {
         this.name = name;
         this.foodGroup = foodGroup;
@@ -35,10 +44,11 @@ public class Ingredient {
         this.carbs = determineCarbs(name);
         this.fat = determineFat(name);
     }
-
-    public Ingredient(String name,String foodGroup, int protein, int carbs, int fat) {
+    */
+    public Ingredient(String name,String foodGroup, int calories, int protein, int carbs, int fat) {
         this.name = name;
         this.foodGroup = foodGroup;
+        this.calories = calories;
         this.protein = protein;
         this.carbs = carbs;
         this.fat = fat;
@@ -58,6 +68,14 @@ public class Ingredient {
 
     public void setFoodGroup(String foodGroup) {
         this.foodGroup = foodGroup;
+    }
+
+    public int getCalories() {
+        return calories;
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
     }
 
     public int getProtein() {
@@ -83,7 +101,7 @@ public class Ingredient {
     public void setFat(int fat) {
         this.fat = fat;
     }
-
+    /*//NO LONGER NEED THESE METHODS >> THESE METHODS USED FAKE VALUES
     public String determineFoodGroup(String ingredient){
         String food_group;
         switch(ingredient) {
@@ -153,12 +171,13 @@ public class Ingredient {
             return 0;
         }
     }
-
+    */
     @Override
     public String toString() {
         return "Ingredient{" +
                 "name='" + name + '\'' +
                 ", foodGroup='" + foodGroup + '\'' +
+                ", calories=" + calories +
                 ", protein=" + protein +
                 ", carbs=" + carbs +
                 ", fat=" + fat +

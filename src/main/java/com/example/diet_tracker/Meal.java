@@ -6,19 +6,19 @@ public class Meal {
     private String name;
     private String time;
     private int calories;
-    ArrayList<Ingredient> ingredients = new ArrayList<>();
     private int proteinContent;
     private int carbContent;
     private int fatContent;
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
 
-    ArrayList<String> includedFoodGroups = new ArrayList<>();
-    ArrayList<String> missingFoodGroups = new ArrayList<>();
+    private ArrayList<String> includedFoodGroups = new ArrayList<>();
+    private ArrayList<String> missingFoodGroups = new ArrayList<>();
 
 
 
     public Meal() {
         name = "undefined";
-        time = "";
+        time = "undefined";
         calories=0;
         proteinContent=0;
         carbContent=0;
@@ -27,17 +27,18 @@ public class Meal {
 
     public Meal(String name){
         this.name = name;
-        time = "";
+        time = "undefined";
         calories =0;
         proteinContent=0;
         carbContent=0;
         fatContent=0;
     }
 
-    public Meal(String name, ArrayList<String> ingredients){
+    public Meal(String name, ArrayList<String> ingredients){//(2) called from IngredientSelectionController
         this.name = name;
-        addIngredients(ingredients);
+        addIngredients(ingredients);//here
         setFoodGroups();
+        this.calories = determineCalories();
         this.proteinContent = determineProteinContent();
         this.carbContent = determineCarbContent();
         this.fatContent = determineFatContent();
@@ -48,18 +49,23 @@ public class Meal {
         this.name = object.name;
         this.ingredients = object.getIngredients();
         setFoodGroups();
+        this.calories = determineCalories();
         this.proteinContent = determineProteinContent();
         this.carbContent = determineCarbContent();
         this.fatContent = determineFatContent();
     }
 
+    /*
     public void addIngredient(String name, String foodGroup){
         Ingredient ingredient = new Ingredient(name, foodGroup);
         ingredients.add(ingredient);
     }
+    */
+    public void addIngredient(String name){//(4) called from addIngredients function
 
-    public void addIngredient(String name){
-        Ingredient ingredient = new Ingredient(name);
+        //Ingredient ingredient = new Ingredient(name);
+        Ingredient ingredient = DBUtils.getItemFromIngredients(name);//get ingredients from database
+        System.out.println(ingredient);
         ingredients.add(ingredient);
     }
 
@@ -73,10 +79,10 @@ public class Meal {
         }
     }
 
-    public void addIngredients(ArrayList<String> ingredients){
+    public void addIngredients(ArrayList<String> ingredients){//(3) called from Meal constructor
         if(ingredients.size() != 0){
             for(int i=0;i<ingredients.size();i++){
-                addIngredient(ingredients.get(i));
+                addIngredient(ingredients.get(i));//here
             }
         }
     }
@@ -109,6 +115,20 @@ public class Meal {
                 }
             }
         }
+    }
+
+    public ArrayList<String> getMissingFoodGroups() {
+        return missingFoodGroups;
+    }
+
+    public int determineCalories(){
+        int calories=0;
+        if(ingredients.size() != 0){
+            for(Ingredient ingredient : ingredients){
+                calories += ingredient.getCalories();
+            }
+        }
+        return calories;
     }
 
     public int determineProteinContent(){
@@ -181,7 +201,14 @@ public class Meal {
     public String toString() {
         return "Meal{" +
                 "name='" + name + '\'' +
+                ", time='" + time + '\'' +
+                ", calories=" + calories +
+                ", proteinContent=" + proteinContent +
+                ", carbContent=" + carbContent +
+                ", fatContent=" + fatContent +
                 ", ingredients=" + ingredients +
+                ", includedFoodGroups=" + includedFoodGroups +
+                ", missingFoodGroups=" + missingFoodGroups +
                 '}';
     }
 }

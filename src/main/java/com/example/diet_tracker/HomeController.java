@@ -24,8 +24,9 @@ public class HomeController {
     @FXML
     public void initialize(){
         setCustomWelcomeLabel();
-        setUpdateLabel();
+        setUpdateProfileLabel();
         initializeProfileButton();
+        initializeAddItemButton();
 
         time_col.setCellValueFactory(new PropertyValueFactory<>("time"));
         name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -41,7 +42,7 @@ public class HomeController {
         label_welcome.setText("Welcome  " + username + "!");
     }
 
-    public void setUpdateLabel(){
+    public void setUpdateProfileLabel(){
         label_update.setVisible(!Singleton.getSingleton().getUser().isProfileComplete());
     }
 

@@ -1,20 +1,16 @@
 package com.example.diet_tracker;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class FoodGroupController {
+    @FXML
+    private Button btn_next;
+
     @FXML
     private Label label_food_groups, label_missing_food_groups;
 
@@ -23,64 +19,37 @@ public class FoodGroupController {
 
     private Meal meal;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     public void initialize(){
         initializeMeal(Singleton.getSingleton().getMealList().getLastMeal());
         initializeView();
+        initializeNextButton();
     }
     public void initializeMeal(Meal object){
         meal = new Meal(object);
     }
 
     public void initializeView(){
-        printMeal();
         setMissingFoodGroupsLabel();
         setFoodGroupCheckBoxes();
     }
 
-    public void gotoMacroView(ActionEvent event){
-        try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("macro-view.fxml"));
-            root = loader.load();
-
-            MacroController macroController = loader.getController();
-
-            macroController.initializeMeal(meal);//pass meal object
-            macroController.initializeView();
-
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void printMeal(){
-        System.out.println(meal);
-        System.out.println(meal.includedFoodGroups);
-        System.out.println(meal.missingFoodGroups);
-        System.out.println(meal.getProteinContent());
-        System.out.println(meal.getCarbContent());
-        System.out.println(meal.getFatContent());
+    public void initializeNextButton(){
+        btn_next.setOnAction(actionEvent -> {
+            FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("macro-view.fxml");
+            Singleton.getSingleton().switchScene(btn_next, fxmlLoader);
+        });
     }
 
     public void setMissingFoodGroupsLabel(){
         StringBuilder missing = new StringBuilder();
 
-        if(meal.missingFoodGroups.size() != 0){
-            for(int i=0; i<meal.missingFoodGroups.size();i++){
-                if(i == meal.missingFoodGroups.size()-1){
-                    missing.append(meal.missingFoodGroups.get(i));
+        if(meal.getMissingFoodGroups().size() != 0){
+            for(int i=0; i<meal.getMissingFoodGroups().size();i++){
+                if(i == meal.getMissingFoodGroups().size()-1){
+                    missing.append(meal.getMissingFoodGroups().get(i));
                 }
                 else {
-                    missing.append(meal.missingFoodGroups.get(i)).append(", ");
+                    missing.append(meal.getMissingFoodGroups().get(i)).append(", ");
                 }
             }
         }
@@ -93,7 +62,6 @@ public class FoodGroupController {
     public void setFoodGroupCheckBoxes(){
         String missing = label_missing_food_groups.getText();
         cb_fruits.setSelected(!missing.contains("Fruits"));
-
         cb_vegetables.setSelected(!missing.contains("Vegetables"));
         cb_grains.setSelected(!missing.contains("Grains"));
         cb_protein.setSelected(!missing.contains("Protein"));

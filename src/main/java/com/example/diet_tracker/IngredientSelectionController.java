@@ -30,11 +30,7 @@ public class IngredientSelectionController {
 
     @FXML
     private TextField tf_meal_name;
-    /*
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    */
+
     public void initialize(){
         initializeTimeChoiceBox();
         initializeNextButton();
@@ -47,7 +43,7 @@ public class IngredientSelectionController {
 
     public void initializeNextButton(){
         btn_next.setOnAction(actionEvent ->{
-            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());//create meal object from user input
+            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());//(1) create meal object from user input
 
             Singleton.getSingleton().getMealList().addMeal(meal);
 
@@ -56,36 +52,6 @@ public class IngredientSelectionController {
             System.out.println(Singleton.getSingleton().getMealList().getMeals());
         });
     }
-
-    public void gotoFoodGroupView(ActionEvent event){
-        /*
-        try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("food-group-view.fxml"));
-            root = loader.load();
-
-            FoodGroupController foodGroupController = loader.getController();
-
-            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());//create meal object from user input
-            Singleton.getSingleton().meals.add(meal);
-            foodGroupController.initializeMeal(meal);
-            foodGroupController.initializeView();
-
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-        */
-
-    }
-
-
-
-
 
     public ArrayList<String> getRadioButtonInput(){
         ArrayList<String> ingredientsSelected= new ArrayList<>();

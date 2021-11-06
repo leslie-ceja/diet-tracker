@@ -95,7 +95,7 @@ public class DBUtils {
                     e.printStackTrace();
                 }
             }
-            closeConnection();
+            //closeConnection();
         }
     }
 
@@ -141,7 +141,7 @@ public class DBUtils {
                     e.printStackTrace();
                 }
             }
-            closeConnection();
+            //closeConnection();
         }
     }
 
@@ -153,5 +153,51 @@ public class DBUtils {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static Ingredient getItemFromIngredients(String itemName){//(5) called from Meal addIngredient function
+        Ingredient ingredient = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM ingredients WHERE itemName = ?");
+            preparedStatement.setString(1, itemName);
+            resultSet = preparedStatement.executeQuery();
+            if(!resultSet.isBeforeFirst()){//if no results found
+                ingredient = new Ingredient(itemName);//return ingredient with name only constructor
+                return ingredient;
+            }
+            else{
+                while(resultSet.next()) {//if results found
+                    String name = resultSet.getString("itemName");
+                    String foodGroup = resultSet.getString("foodGroup");
+                    int calories = resultSet.getInt("calories");
+                    int protein = resultSet.getInt("protein");
+                    int carbs = resultSet.getInt("carbs");
+                    int fat = resultSet.getInt("fat");
+                    ingredient = new Ingredient(name, foodGroup, calories, protein, carbs, fat);//return populated ingredient
+                    System.out.println(name);
+                    return ingredient;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if(resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch(SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return ingredient;
     }
 }

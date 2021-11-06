@@ -1,6 +1,4 @@
 package com.example.diet_tracker;
-
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,8 +8,9 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 
 public class MacroController {
-
+    @FXML
     public Button btn_save;
+
     @FXML
     private PieChart pc_macros;
 
@@ -19,10 +18,9 @@ public class MacroController {
 
     @FXML
     public void initialize(){
-        btn_save.setOnAction(event->{
-            FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("home-view.fxml");
-            Singleton.getSingleton().switchScene(btn_save,fxmlLoader);
-        });
+        initializeMeal(Singleton.getSingleton().getMealList().getLastMeal());
+        initializeView();
+        initializeSaveButton();
     }
 
     public void initializeMeal(Meal object){
@@ -33,7 +31,12 @@ public class MacroController {
         setMacroPieChart();
     }
 
-    public void gotoFoodLogView(){}
+    public void initializeSaveButton(){
+        btn_save.setOnAction(event->{
+            FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("home-view.fxml");
+            Singleton.getSingleton().switchScene(btn_save,fxmlLoader);
+        });
+    }
 
     public void setMacroPieChart(){
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(

@@ -18,7 +18,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btn_next" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" onAction="#gotoMacroView" style="-fx-background-color: #ffffff;" text="Next" />
+            <Button fx:id="btn_next" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Next" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="315.0" prefWidth="600.0">
