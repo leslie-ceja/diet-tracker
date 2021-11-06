@@ -6,13 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class IngredientSelectionController {
@@ -33,6 +31,7 @@ public class IngredientSelectionController {
 
     public void initialize(){
         initializeTimeChoiceBox();
+        initializeDatePicker();
         initializeNextButton();
     }
 
@@ -41,9 +40,13 @@ public class IngredientSelectionController {
         cb_time.setItems(choiceBoxData);
     }
 
+    public void initializeDatePicker(){
+        dp_date.setValue(LocalDate.now());//default to current date unless changed
+    }
+
     public void initializeNextButton(){
         btn_next.setOnAction(actionEvent ->{
-            Meal meal = new Meal(tf_meal_name.getText(), getRadioButtonInput());//(1) create meal object from user input
+            Meal meal = new Meal(getNameInput(), getDateInput(), getRadioButtonInput());//(1) create meal object from user input
 
             Singleton.getSingleton().getMealList().addMeal(meal);
 
@@ -51,6 +54,20 @@ public class IngredientSelectionController {
             Singleton.getSingleton().switchScene(btn_next, fxmlLoader);
             System.out.println(Singleton.getSingleton().getMealList().getMeals());
         });
+    }
+
+    public String getNameInput(){
+        if(tf_meal_name.getText().isEmpty()){
+            return "undefined";
+        }
+        else{
+            return tf_meal_name.getText();
+        }
+    }
+
+    public Date getDateInput(){
+        Date date = Date.valueOf(dp_date.getValue());//convert to sql date for database compatibility
+        return date;
     }
 
     public ArrayList<String> getRadioButtonInput(){

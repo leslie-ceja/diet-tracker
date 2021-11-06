@@ -18,7 +18,7 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="303.0" prefWidth="600.0">
          <children>
-            <PieChart fx:id="pc_macros" labelsVisible="false" layoutX="125.0" legendSide="LEFT" prefHeight="302.0" prefWidth="350.0" title="Macronutrient Content" />
+            <PieChart fx:id="pc_macros" layoutX="91.0" legendSide="LEFT" prefHeight="302.0" prefWidth="384.0" title="Macronutrient Content" />
          </children></AnchorPane>
    </children>
 </VBox>

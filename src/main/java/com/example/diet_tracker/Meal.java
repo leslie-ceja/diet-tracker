@@ -1,9 +1,11 @@
 package com.example.diet_tracker;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Meal {
     private String name;
+    private Date date;
     private String time;
     private int calories;
     private int proteinContent;
@@ -18,6 +20,7 @@ public class Meal {
 
     public Meal() {
         name = "undefined";
+        date = new Date(System.currentTimeMillis());
         time = "undefined";
         calories=0;
         proteinContent=0;
@@ -27,6 +30,7 @@ public class Meal {
 
     public Meal(String name){
         this.name = name;
+        date = new Date(System.currentTimeMillis());
         time = "undefined";
         calories =0;
         proteinContent=0;
@@ -34,8 +38,10 @@ public class Meal {
         fatContent=0;
     }
 
-    public Meal(String name, ArrayList<String> ingredients){//(2) called from IngredientSelectionController
+    public Meal(String name, Date date, ArrayList<String> ingredients){//(2) called from IngredientSelectionController
         this.name = name;
+        this.date = date;
+        this.time = "undefined";
         addIngredients(ingredients);//here
         setFoodGroups();
         this.calories = determineCalories();
@@ -47,6 +53,8 @@ public class Meal {
     //COPY CONSTRUCTOR
     public Meal(Meal object){
         this.name = object.name;
+        this.date = object.date;
+        this.time = "undefined";
         this.ingredients = object.getIngredients();
         setFoodGroups();
         this.calories = determineCalories();
