@@ -38,10 +38,10 @@ public class Meal {
         fatContent=0;
     }
 
-    public Meal(String name, Date date, ArrayList<String> ingredients){//(2) called from IngredientSelectionController
+    public Meal(String name, Date date, String time, ArrayList<String> ingredients){//(2) called from IngredientSelectionController
         this.name = name;
         this.date = date;
-        this.time = "undefined";
+        this.time = time;
         addIngredients(ingredients);//here
         setFoodGroups();
         this.calories = determineCalories();
@@ -54,7 +54,7 @@ public class Meal {
     public Meal(Meal object){
         this.name = object.name;
         this.date = object.date;
-        this.time = "undefined";
+        this.time = object.time;
         this.ingredients = object.getIngredients();
         setFoodGroups();
         this.calories = determineCalories();
@@ -63,12 +63,6 @@ public class Meal {
         this.fatContent = determineFatContent();
     }
 
-    /*
-    public void addIngredient(String name, String foodGroup){
-        Ingredient ingredient = new Ingredient(name, foodGroup);
-        ingredients.add(ingredient);
-    }
-    */
     public void addIngredient(String name){//(4) called from addIngredients function
 
         //Ingredient ingredient = new Ingredient(name);

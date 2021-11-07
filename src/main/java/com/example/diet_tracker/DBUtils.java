@@ -235,6 +235,32 @@ public class DBUtils {
 
     }
 
+    public static void insertMeal(String username, String name, Date date, String time, int calories, int protein, int carbs, int fat){
+        PreparedStatement psInsert = null;
+        try{
+            psInsert = connection.prepareStatement("INSERT INTO mealtable (username, date, time, mealName, calories, protein, carbs, fat) VALUES (?,?,?,?,?,?,?,?)");
+            psInsert.setString(1, username);
+            psInsert.setDate(2, date);
+            psInsert.setString(3, time);
+            psInsert.setString(4, name);
+            psInsert.setInt(5, calories);
+            psInsert.setInt(6, protein);
+            psInsert.setInt(7, carbs);
+            psInsert.setInt(8, fat);
+            psInsert.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        if(psInsert != null){
+            try{
+                psInsert.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    }
+
     public static Ingredient getItemFromIngredients(String itemName){//(5) called from Meal addIngredient function
         Ingredient ingredient = null;
         PreparedStatement preparedStatement = null;

@@ -38,6 +38,7 @@ public class IngredientSelectionController {
     public void initializeTimeChoiceBox(){
         ObservableList<String> choiceBoxData = FXCollections.observableArrayList("Breakfast", "Morning Snack", "Lunch", "Afternoon Snack", "Dinner", "Evening Snack");
         cb_time.setItems(choiceBoxData);
+        cb_time.setValue("");
     }
 
     public void initializeDatePicker(){
@@ -46,9 +47,11 @@ public class IngredientSelectionController {
 
     public void initializeNextButton(){
         btn_next.setOnAction(actionEvent ->{
-            Meal meal = new Meal(getNameInput(), getDateInput(), getRadioButtonInput());//(1) create meal object from user input
+            Meal meal = new Meal(getNameInput(), getDateInput(), getTimeInput(), getRadioButtonInput());//(1) create meal object from user input
 
             Singleton.getSingleton().getMealList().addMeal(meal);
+            String username = Singleton.getSingleton().getUser().getUsername();
+            DBUtils.insertMeal(username, meal.getName(), meal.getDate(), meal.getTime(), meal.getCalories(), meal.getProteinContent(), meal.getCarbContent(), meal.getFatContent());
 
             FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("food-group-view.fxml");
             Singleton.getSingleton().switchScene(btn_next, fxmlLoader);
@@ -62,6 +65,15 @@ public class IngredientSelectionController {
         }
         else{
             return tf_meal_name.getText();
+        }
+    }
+
+    public String getTimeInput(){
+        if(cb_time.getValue().equals("")){
+            return "undefined";
+        }
+        else {
+            return (String) cb_time.getValue();
         }
     }
 
