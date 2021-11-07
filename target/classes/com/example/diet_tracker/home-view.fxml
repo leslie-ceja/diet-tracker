@@ -22,14 +22,15 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="304.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="meal_table" layoutX="38.0" layoutY="32.0" prefHeight="200.0" prefWidth="262.0">
+            <TableView fx:id="meal_table" layoutX="21.0" layoutY="32.0" prefHeight="200.0" prefWidth="354.0">
               <columns>
-                <TableColumn fx:id="time_col" prefWidth="86.0" text="Time" />
-                <TableColumn fx:id="name_col" prefWidth="88.0" text="Name" />
-                  <TableColumn fx:id="calorie_col" prefWidth="87.0" text="Calories" />
+                  <TableColumn fx:id="date_col" text="Date" />
+                <TableColumn fx:id="time_col" prefWidth="76.0" text="Time" />
+                <TableColumn fx:id="name_col" prefWidth="132.0" text="Name" />
+                  <TableColumn fx:id="calorie_col" prefWidth="65.0" text="Calories" />
               </columns>
             </TableView>
-            <Button fx:id="btn_add_item" layoutX="234.0" layoutY="250.0" mnemonicParsing="false" style="-fx-background-color: #32a852;" text="Add Item" textFill="WHITE" />
+            <Button fx:id="btn_add_item" layoutX="309.0" layoutY="251.0" mnemonicParsing="false" style="-fx-background-color: #32a852;" text="Add Item" textFill="WHITE" />
          </children></AnchorPane>
    </children>
 </VBox>

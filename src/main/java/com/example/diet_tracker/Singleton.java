@@ -6,11 +6,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Singleton {
     private static Singleton singleton = new Singleton();
-    public ArrayList<Meal> meals = new ArrayList<>();
     private User user = new User();
     private MealList mealList = new MealList();
 

@@ -177,6 +177,14 @@ public class Meal {
         this.name = name;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public String getTime() {
         return time;
     }
@@ -209,6 +217,7 @@ public class Meal {
     public String toString() {
         return "Meal{" +
                 "name='" + name + '\'' +
+                ", date=" + date +
                 ", time='" + time + '\'' +
                 ", calories=" + calories +
                 ", proteinContent=" + proteinContent +

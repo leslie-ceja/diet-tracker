@@ -8,6 +8,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.sql.Date;
+
 public class HomeController {
     @FXML
     private Button btn_profile, btn_add_item;
@@ -17,6 +19,7 @@ public class HomeController {
 
     @FXML
     private TableView<Meal> meal_table;
+    public TableColumn<Meal, String> date_col;
     public TableColumn<Meal, String> time_col;
     public TableColumn<Meal, String> name_col;
     public TableColumn<Meal, String> calorie_col;
@@ -28,11 +31,12 @@ public class HomeController {
         initializeProfileButton();
         initializeAddItemButton();
 
+        date_col.setCellValueFactory(new PropertyValueFactory<>("date"));//internally uses getters
         time_col.setCellValueFactory(new PropertyValueFactory<>("time"));
         name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
         calorie_col.setCellValueFactory(new PropertyValueFactory<>("calories"));
 
-        meal_table.getItems().addAll(Singleton.getSingleton().meals);
+        meal_table.getItems().addAll(Singleton.getSingleton().getMealList().getMeals());
 
 
     }
