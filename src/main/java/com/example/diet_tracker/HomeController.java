@@ -31,14 +31,7 @@ public class HomeController {
         initializeProfileButton();
         initializeAddItemButton();
 
-        date_col.setCellValueFactory(new PropertyValueFactory<>("date"));//internally uses getters
-        time_col.setCellValueFactory(new PropertyValueFactory<>("time"));
-        name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
-        calorie_col.setCellValueFactory(new PropertyValueFactory<>("calories"));
-
-        meal_table.getItems().addAll(Singleton.getSingleton().getMealList().getMeals());
-
-        System.out.println(Singleton.getSingleton().getUser());
+        initializeTableView();
     }
 
     public void setCustomWelcomeLabel() {
@@ -62,5 +55,16 @@ public class HomeController {
             FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("ingredient-selection-view.fxml");
             Singleton.getSingleton().switchScene(btn_add_item, fxmlLoader);
         });
+    }
+
+    public void initializeTableView(){
+        date_col.setCellValueFactory(new PropertyValueFactory<>("date"));//internally uses getters
+        time_col.setCellValueFactory(new PropertyValueFactory<>("time"));
+        name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
+        calorie_col.setCellValueFactory(new PropertyValueFactory<>("calories"));
+
+        //meal_table.getItems().addAll(Singleton.getSingleton().getMealList().getMeals());
+        meal_table.getItems().addAll(DBUtils.retrieveMeals(Singleton.getSingleton().getUser().getUsername()));
+        System.out.println(Singleton.getSingleton().getUser());
     }
 }

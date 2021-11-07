@@ -38,6 +38,16 @@ public class Meal {
         fatContent=0;
     }
 
+    public Meal(String name, Date date, String time, int calories, int proteinContent, int carbContent, int fatContent) {
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.calories = calories;
+        this.proteinContent = proteinContent;
+        this.carbContent = carbContent;
+        this.fatContent = fatContent;
+    }
+
     public Meal(String name, Date date, String time, ArrayList<String> ingredients){//(2) called from IngredientSelectionController
         this.name = name;
         this.date = date;

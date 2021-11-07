@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class DBUtils {
@@ -251,14 +252,61 @@ public class DBUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-        if(psInsert != null){
-            try{
-                psInsert.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            if(psInsert != null){
+                try{
+                    psInsert.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
+
+    public static ArrayList<Meal> retrieveMeals(String username){
+        Meal meal;
+        MealList meals = new MealList();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM mealtable WHERE username = ?");
+            preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+            if(!resultSet.isBeforeFirst()){//if no results found
+                return meals.getMeals();
+            }
+            else{
+                while(resultSet.next()){//if results found
+                    Date date = resultSet.getDate("date");
+                    String time = resultSet.getString("time");
+                    String name = resultSet.getString("mealName");
+                    int calories = resultSet.getInt("calories");
+                    int protein = resultSet.getInt("protein");
+                    int carbs = resultSet.getInt("carbs");
+                    int fat = resultSet.getInt("fat");
+                    meal = new Meal(name, date,time,calories, protein, carbs, fat);
+                    meals.addMeal(meal);
+                }
+                return meals.getMeals();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if(resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch(SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return meals.getMeals();
     }
 
     public static Ingredient getItemFromIngredients(String itemName){//(5) called from Meal addIngredient function
