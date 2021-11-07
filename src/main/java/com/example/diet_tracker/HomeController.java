@@ -38,7 +38,7 @@ public class HomeController {
 
         meal_table.getItems().addAll(Singleton.getSingleton().getMealList().getMeals());
 
-
+        System.out.println(Singleton.getSingleton().getUser());
     }
 
     public void setCustomWelcomeLabel() {

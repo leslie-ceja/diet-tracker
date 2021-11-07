@@ -40,7 +40,8 @@ public class NewUserController {
         if(!Singleton.getSingleton().getUser().isProfileComplete()){
             setMissingInformationLabel();
         }
-        else{
+        else{//only change scene when all information is complete
+            updateUser();
             FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("home-view.fxml");
             Singleton.getSingleton().switchScene(btn_done, fxmlLoader);
         }
@@ -154,5 +155,11 @@ public class NewUserController {
     }
     public void setMissingInformationLabel(){
         label_missing_information.setVisible(!Singleton.getSingleton().getUser().isProfileComplete());
+    }
+
+    public void updateUser(){
+        User temp = new User(Singleton.getSingleton().getUser());
+        DBUtils.updateUser(temp.username, temp.getSex(), temp.getAge(), temp.getWeight(), temp.getHeight(), temp.getActivityLevel(), temp.getBasalMetabolicRate(), temp.getCaloricNeed());
+        System.out.println(temp);
     }
 }

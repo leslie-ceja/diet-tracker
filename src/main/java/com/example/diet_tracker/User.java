@@ -14,8 +14,31 @@ public class User {
     public User() {
     }
 
+    public User(User object){
+        this.username = object.username;
+        this.sex = object.sex;
+        this.age = object.age;
+        this.weight = object.weight;
+        this.activityLevel = object.activityLevel;
+        this.basalMetabolicRate = object.basalMetabolicRate;
+        this.caloricNeed = object.caloricNeed;
+        this.profileComplete = object.profileComplete;
+    }
+
     public User(String username) {
         this.username = username;
+    }
+
+    public User(String username, String sex, int age, int weight, int height, String activityLevel, double basalMetabolicRate, double caloricNeed, boolean profileComplete) {
+        this.username = username;
+        this.sex = sex;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        this.activityLevel = activityLevel;
+        this.basalMetabolicRate = basalMetabolicRate;
+        this.caloricNeed = caloricNeed;
+        this.profileComplete = profileComplete;
     }
 
     public String getUsername() {
@@ -113,5 +136,20 @@ public class User {
 
     public void setProfileComplete(boolean profileComplete) {
         this.profileComplete = profileComplete;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", activityLevel='" + activityLevel + '\'' +
+                ", basalMetabolicRate=" + basalMetabolicRate +
+                ", caloricNeed=" + caloricNeed +
+                ", profileComplete=" + profileComplete +
+                '}';
     }
 }

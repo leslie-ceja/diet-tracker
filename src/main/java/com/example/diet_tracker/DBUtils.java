@@ -21,7 +21,7 @@ public class DBUtils {
 
         if(username != null){ //button_login passes in valid username + logged-in.fxml
             try {
-                Singleton.getSingleton().getUser().setUsername(username);//set username
+                //Singleton.getSingleton().getUser().setUsername(username);//set username
 
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
@@ -56,7 +56,7 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try{
-            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
@@ -68,6 +68,26 @@ public class DBUtils {
                 while(resultSet.next()) {//moves cursor forward one row
                     String retrievedPassword = resultSet.getString("password");
                     if(retrievedPassword.equals(password)){
+                        String name = resultSet.getString("username");
+                        boolean profile = resultSet.getBoolean("profileComplete");
+                        User user;
+
+                        if(profile) {//if profile is complete create user with full user constructor
+                            String sex = resultSet.getString("sex");
+                            int age = resultSet.getInt("age");
+                            int weight = resultSet.getInt("weight");
+                            int height = resultSet.getInt("height");
+                            String activity = resultSet.getString("activity");
+                            double bmr = resultSet.getDouble("bmr");
+                            double caloricNeed = resultSet.getDouble("caloricNeed");
+                            user = new User(name, sex, age, weight, height, activity, bmr, caloricNeed, profile);
+                            Singleton.getSingleton().setUser(user);
+                        }
+                        else{//if user profile is not complete use name only constructor
+                            user = new User(name);
+                            Singleton.getSingleton().setUser(user);
+                        }
+                        System.out.println("profileComplete: "  + profile);
                         changeScene(event, "home-view.fxml", username);
                     } else {
                         System.out.println("Passwords did not match!");
@@ -121,7 +141,10 @@ public class DBUtils {
                 psInsert.setString(2, password);
                 psInsert.executeUpdate();
 
-                changeScene(event, "logged-in.fxml", username);
+                User user = new User(username);
+                Singleton.getSingleton().setUser(user);
+
+                changeScene(event, "home-view.fxml", username);
             }
         } catch(SQLException e) {
             e.printStackTrace();
@@ -153,6 +176,63 @@ public class DBUtils {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void updateUser(String name, String sex, int age, int weight, int height, String activity, double bmr, double caloricNeed){
+        PreparedStatement psUpdate = null;
+        int rowAffected = 0;
+        try{
+            psUpdate = connection.prepareStatement("UPDATE users SET sex = ? WHERE username = ?");
+            psUpdate.setString(1, sex);
+            psUpdate.setString(2, name);
+            rowAffected = psUpdate.executeUpdate();
+
+            psUpdate = connection.prepareStatement("UPDATE users SET age = ? WHERE username = ?");
+            psUpdate.setInt(1, age);
+            psUpdate.setString(2, name);
+            rowAffected = psUpdate.executeUpdate();
+
+            psUpdate = connection.prepareStatement("UPDATE users SET weight = ? WHERE username = ?");
+            psUpdate.setInt(1, weight);
+            psUpdate.setString(2, name);
+            rowAffected = psUpdate.executeUpdate();
+
+            psUpdate = connection.prepareStatement("UPDATE users SET height = ? WHERE username = ?");
+            psUpdate.setInt(1, height);
+            psUpdate.setString(2, name);
+            rowAffected = psUpdate.executeUpdate();
+
+            psUpdate = connection.prepareStatement("UPDATE users SET activity = ? WHERE username = ?");
+            psUpdate.setString(1, activity);
+            psUpdate.setString(2, name);
+            rowAffected = psUpdate.executeUpdate();
+
+            psUpdate = connection.prepareStatement("UPDATE users SET bmr = ? WHERE username = ?");
+            psUpdate.setDouble(1, bmr);
+            psUpdate.setString(2, name);
+            rowAffected = psUpdate.executeUpdate();
+
+            psUpdate = connection.prepareStatement("UPDATE users SET caloricNeed = ? WHERE username = ?");
+            psUpdate.setDouble(1, caloricNeed);
+            psUpdate.setString(2, name);
+            rowAffected = psUpdate.executeUpdate();
+
+            psUpdate = connection.prepareStatement("UPDATE users SET profileComplete = ? WHERE username = ?");
+            psUpdate.setBoolean(1, true);
+            psUpdate.setString(2, name);
+            rowAffected = psUpdate.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if(psUpdate != null){
+                try{
+                    psUpdate.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
 
     public static Ingredient getItemFromIngredients(String itemName){//(5) called from Meal addIngredient function
