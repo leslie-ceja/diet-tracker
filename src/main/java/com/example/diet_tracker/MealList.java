@@ -9,8 +9,8 @@ public class MealList {
         return meals;
     }
 
-    public void setMeals(ArrayList<Meal> meals) {
-        this.meals = meals;
+    public void setMeals(MealList meals) {
+        this.meals = meals.getMeals();
     }
 
     public Meal getLastMeal(){

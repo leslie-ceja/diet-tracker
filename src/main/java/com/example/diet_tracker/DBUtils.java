@@ -284,9 +284,12 @@ public class DBUtils {
                     int carbs = resultSet.getInt("carbs");
                     int fat = resultSet.getInt("fat");
                     meal = new Meal(name, date,time,calories, protein, carbs, fat);
+                    //Singleton.getSingleton().getMealList().addMeal(meal);
                     meals.addMeal(meal);
+                    Singleton.getSingleton().getMealList().setMeals(meals);
                 }
-                return meals.getMeals();
+                return Singleton.getSingleton().getMealList().getMeals();
+                //return meals.getMeals();
             }
         } catch (SQLException e) {
             e.printStackTrace();
