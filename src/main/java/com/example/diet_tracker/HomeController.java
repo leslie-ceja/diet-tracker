@@ -12,7 +12,7 @@ import java.sql.Date;
 
 public class HomeController {
     @FXML
-    private Button btn_profile, btn_add_item;
+    private Button btn_logout, btn_profile, btn_add_item;
 
     @FXML
     private Label label_welcome, label_update;
@@ -28,6 +28,7 @@ public class HomeController {
     public void initialize(){
         setCustomWelcomeLabel();
         setUpdateProfileLabel();
+        initializeLogOutButton();
         initializeProfileButton();
         initializeAddItemButton();
 
@@ -41,6 +42,13 @@ public class HomeController {
 
     public void setUpdateProfileLabel(){
         label_update.setVisible(!Singleton.getSingleton().getUser().isProfileComplete());
+    }
+
+    public void initializeLogOutButton(){
+        btn_logout.setOnAction(actionEvent -> {
+            FXMLLoader fxmlLoader = Singleton.getSingleton().fxmlLoader("login-view.fxml");
+            Singleton.getSingleton().switchScene(btn_logout, fxmlLoader);
+        });
     }
 
     public void initializeProfileButton(){
