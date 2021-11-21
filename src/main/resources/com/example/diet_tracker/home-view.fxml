@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -35,6 +36,14 @@
               </columns>
             </TableView>
             <Button fx:id="btn_add_item" layoutX="309.0" layoutY="251.0" mnemonicParsing="false" style="-fx-background-color: #32a852;" text="Add Item" textFill="WHITE" />
+            <BarChart fx:id="bc_calorie_consumption" layoutX="386.0" layoutY="32.0" prefHeight="200.0" prefWidth="200.0" title="Calorie Consumption" visible="false">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
          </children></AnchorPane>
    </children>
 </VBox>
