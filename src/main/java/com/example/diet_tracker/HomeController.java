@@ -1,11 +1,10 @@
 package com.example.diet_tracker;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Date;
@@ -16,6 +15,9 @@ public class HomeController {
 
     @FXML
     private Label label_welcome, label_update;
+
+    @FXML
+    private ChoiceBox cb_dates;
 
     @FXML
     private TableView<Meal> meal_table;
@@ -33,6 +35,8 @@ public class HomeController {
         initializeAddItemButton();
 
         initializeTableView();
+
+        initializeDatesChoiceBox();
     }
 
     public void setCustomWelcomeLabel() {
@@ -74,5 +78,13 @@ public class HomeController {
         //meal_table.getItems().addAll(Singleton.getSingleton().getMealList().getMeals());
         meal_table.getItems().addAll(DBUtils.retrieveMeals(Singleton.getSingleton().getUser().getUsername()));
         System.out.println(Singleton.getSingleton().getUser());
+    }
+
+    public void initializeDatesChoiceBox(){
+        System.out.println(Singleton.getSingleton().getMealList().getMeals());
+        ObservableList<String> choiceBoxData = FXCollections.observableArrayList(Singleton.getSingleton().getMealList().getMealDates());
+        cb_dates.setItems(choiceBoxData);
+        //NEED TO SET ON ACTION
+        //WHEN BUTTON DATA IS SELECTED >> DISPLAY BAR CHART
     }
 }
