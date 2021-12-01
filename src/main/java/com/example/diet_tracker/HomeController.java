@@ -4,10 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class HomeController {
     @FXML
@@ -18,6 +21,9 @@ public class HomeController {
 
     @FXML
     private ChoiceBox cb_dates;
+
+    @FXML
+    private BarChart bc_calorie_consumption;
 
     @FXML
     private TableView<Meal> meal_table;
@@ -86,5 +92,38 @@ public class HomeController {
         cb_dates.setItems(choiceBoxData);
         //NEED TO SET ON ACTION
         //WHEN BUTTON DATA IS SELECTED >> DISPLAY BAR CHART
+        cb_dates.setOnAction(actionEvent -> {
+            String selectedDate = (String) cb_dates.getValue();// MM/DD/YYYY
+            setBarChart(selectedDate);
+        });
+    }
+
+    public void setBarChart(String selectedDate){
+        //string manipulation//////////////////////////////////////////////////////////////////
+        selectedDate = selectedDate.replace('/','-');
+
+        char charArray[] = selectedDate.toCharArray();
+        String monthDay = new String(charArray,0,5);
+        String year = new String(charArray,6,4);
+
+        String formattedDate = year + "-" + monthDay;//create new string in required format
+
+        Date date = Date.valueOf(formattedDate);//String has to be in YYYY-MM-DD format to work
+        ///////////////////////////////////////////////////////////////////////////////////////
+
+        int calorieIntake = Singleton.getSingleton().getMealList().getCaloriesFromDate(date);//get calorie intake >> add to chart
+        XYChart.Series intake = new XYChart.Series();
+        intake.setName("Intake");
+        intake.getData().add(new XYChart.Data("Calories", calorieIntake));
+        bc_calorie_consumption.getData().add(intake);
+
+        int caloricNeed = (int) Singleton.getSingleton().getUser().getCaloricNeed();//get caloric need >> add to chart
+        XYChart.Series need = new XYChart.Series();
+        need.setName("Need");
+        need.getData().add(new XYChart.Data("Calories", caloricNeed));
+        bc_calorie_consumption.getData().add(need);
+
+        bc_calorie_consumption.setLegendVisible(true);
+        bc_calorie_consumption.setVisible(true);
     }
 }

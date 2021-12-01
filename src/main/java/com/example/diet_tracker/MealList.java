@@ -1,5 +1,6 @@
 package com.example.diet_tracker;
 
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,5 +43,19 @@ public class MealList {
         dates.clear();
         dates.addAll(set);
         return dates;
+    }
+
+    public int getCaloriesFromDate(Date searchDate){
+        Date date;
+        int calories = 0;
+        if(meals.size() != 0){
+            for(Meal meal: meals){
+                date = meal.getDate();
+                if(date.equals(searchDate)){
+                    calories += meal.getCalories();
+                }
+            }
+        }
+        return calories;
     }
 }
